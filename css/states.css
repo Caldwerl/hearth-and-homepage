@@ -6,3 +6,17 @@ a {
 .header__link:hover {
   color: #C5DCCE;
 }
+
+.article__link:hover {
+  color: #C5DCCE;
+}
+
+.sidebar__button:hover {
+  color: #C5DCCE;
+  cursor: pointer;
+}
+
+.data:hover {
+  cursor: pointer;
+  text-shadow: 0 0 10px #FF0000;
+}
