@@ -5,6 +5,7 @@ a {
 
 .header__link:hover {
   color: #C5DCCE;
+  cursor: pointer;
 }
 
 .article__link:hover {

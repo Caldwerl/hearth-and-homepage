@@ -262,6 +262,7 @@ body {
 
 .sidebar__text {
   background-color: #00250E;
+  display: block;
   font-family: 'laconicregular';
   font-size: 1.2em;
   padding: 4%;
@@ -277,7 +278,7 @@ body {
     width: 0;
 }
 
-.sidebar__text > p {
+.sidebar__text  p {
   margin-bottom: 3%;
 }
 
@@ -368,4 +369,51 @@ body {
 
 .hide {
   visibility: hidden;
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 959px) {
+
+  body {
+    min-width: 600px;
+  }
+
+  .container_12 {
+    width: 600px;
+  }
+
+  .header__title {
+    margin-left: 4%;
+  }
+
+  .article {
+    left: 0% !important;
+    margin-left: 10%;
+    min-width: 80%;
+  }
+
+  .article__link {
+    left: 0% !important;
+    margin: 2%;
+    margin-left: 25%;
+    min-width: 45%;
+  }
+
+  .format {
+    float: left;
+    margin-left: 2.5%;
+    min-width: 95%;
+  }
+
+  .sidebar {
+    clear: none;
+    float: right;
+    margin-right: 2%;
+    min-width: 35%;
+  }
+
+  .score {
+    float: left;
+  }
+
 }
