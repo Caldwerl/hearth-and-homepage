@@ -2,15 +2,15 @@ $(function () {
 
   var currentScore = new UserData();
 
-  var currentPage;
+  currentPage = "initial";
 
-  populateIndexPage(currentPage);
+  populateIndexPage();
 
-  $('#index').on('click', function() {populateIndexPage(currentPage); } );
+  $('#index').on('click', function() {populateIndexPage(); } );
 
-  $('#format').on('click', function() {populateFormatPage(currentPage, currentScore); } );
+  $('#format').on('click', function() {populateFormatPage(currentScore); } );
 
-  $('#about').on('click', function() {populateAboutPage(currentPage); } );
+  $('#about').on('click', function() {populateAboutPage(); } );
 
 
 });
@@ -93,6 +93,7 @@ function UserData () {
     self.updateScore();
     $('.data').remove();
     fillFormatArea(5);
+    $('.data').hide().fadeIn(1);
     $('.data').on('click', self.destroyData);
   };
   //End resetBoard
@@ -107,7 +108,7 @@ function UserData () {
 
 
 
-function populateIndexPage (currentPage) {
+function populateIndexPage () {
 
   if (currentPage != "index") {
 
@@ -135,7 +136,7 @@ function populateIndexPage (currentPage) {
 
 
 
-function populateFormatPage (currentPage, currentScore) {
+function populateFormatPage (currentScore) {
 
   if (currentPage != "format") {
 
@@ -145,11 +146,12 @@ function populateFormatPage (currentPage, currentScore) {
     $('.format').append('<h2 class="article__title">Datacube Removal Area</h2>');
     $('.format').append('<div class="format__area"></div>');
 
-    $('main').append('<div class="grid_3 sidebar"></div>');
+    $('main').append('<div class="grid_3 sidebar score"></div>');
     $('.sidebar').append('<h2 class="sidebar__title">Format Score</h2>');
     $('.sidebar').append('<div class="sidebar__text"></div>');
     $('.sidebar__text').append('<p>Score:</p><p id="score" class="sidebar__text__number"></p>');
     $('.sidebar__text').append('<p>Combo:</p><p id="combo" class="sidebar__text__number"></p>');
+    //$('.sidebar__text').append('<div class="sidebar__text--right"></div>');
     $('.sidebar__text').append('<p>High Score:</p><p id="hscore" class="sidebar__text__number"></p>');
     $('.sidebar__text').append('<p>Highest Combo:</p><p id="hcombo" class="sidebar__text__number"></p>');
     $('.sidebar__text').append('<p>Total Data Removed:</p><p id="totaldata" class="sidebar__text__number"></p>');
@@ -160,17 +162,10 @@ function populateFormatPage (currentPage, currentScore) {
     $('#optionsButtons').append('<div id="newdata" class="sidebar__button">New Data Batch</div>');
     $('#optionsButtons').append('<div id="resethigh" class="sidebar__button">Reset High Scores</div>');
 
-    currentScore.score = 0;
-    currentScore.combo = 0;
-    currentScore.lastCombo = 0;
-
-    currentScore.updateScore();
-
-    fillFormatArea(5);
-
-    $('.data').on('click', currentScore.destroyData);
     $('#newdata').on('click', currentScore.resetBoard);
     $('#resethigh').on('click', currentScore.resetScore);
+
+    currentScore.resetBoard();
 
     currentPage = "format";
   }
@@ -184,7 +179,7 @@ function populateFormatPage (currentPage, currentScore) {
 
 
 
-function populateAboutPage (currentPage) {
+function populateAboutPage () {
 
   if (currentPage != "about") {
 
