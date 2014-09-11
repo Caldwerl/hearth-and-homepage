@@ -369,3 +369,15 @@ body {
 .hide {
   visibility: hidden;
 }
+
+
+@media only screen and (max-device-width: 480px) {
+
+  body {
+    max-width: 480px;
+  }
+
+  .container_12 {
+    max-width: 480px;
+  }
+}
