@@ -2,6 +2,12 @@ $(function () {
 
   var currentScore = new UserData();
 
+  if (localStorage.length) {
+    currentScore.hScore = localStorage.getItem('hScore');
+    currentScore.hCombo = localStorage.getItem('hCombo');
+    currentScore.tDestroy = localStorage.getItem('tDestroy');
+  };
+
   currentPage = "initial";
 
   populateIndexPage();
@@ -71,6 +77,10 @@ function UserData () {
     $('#hscore').text(this.hScore);
     $('#hcombo').text(this.hCombo);
     $('#totaldata').text(this.tDestroy);
+
+    localStorage.setItem('hScore', this.hScore);
+    localStorage.setItem('hCombo', this.hCombo);
+    localStorage.setItem('tDestroy', this.tDestroy);
   };
   //End updateScore
 
@@ -191,8 +201,8 @@ function populateAboutPage () {
     $('.article').append('<div class="article__text"></div>');
     $('.article__text').append('<p>Brian is a fledgling Web Developer, still a resounding success and a very nice guy!</p>');
     $('.article__text').append('<p>His interests include, but are not limited to: video games, tabletop games, spicy food, tall mountains, archery, dogs, cooking, gardening, and last (but not least) programming.</p>');
-    $('.article__text').append('<a href="www.linkedin.com/pub/brian-caldwell/8b/493/4a" class="grid_4 push_1 article__link">LinkedIn</a>');
-    $('.article__text').append('<a href="github.com/Caldwerl" class="grid_4 push_3 article__link">Github</a>');
+    $('.article__text').append('<a href="https://www.linkedin.com/pub/brian-caldwell/8b/493/4a" class="grid_4 push_1 article__link">LinkedIn</a>');
+    $('.article__text').append('<a href="https://github.com/Caldwerl" class="grid_4 push_3 article__link">Github</a>');
 
     currentPage = "about";
   }
